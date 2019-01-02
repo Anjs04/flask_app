@@ -7,6 +7,7 @@ import urllib.request
 from urllib.parse import urljoin
 import json
 
+var api_key = process.env.key_bingmaps;
 
 db = SQLAlchemy()
 
@@ -41,13 +42,22 @@ class Place(object):
     return urllib.request.urljoin("https://en.wikipedia.org/wiki/", slug.replace(' ', '_'))
   
   def address_to_latlng(self, address):
-    g = geocoder.google(address)
+    print(address)
+    g = geocoder.bing(address, key = process.env.key_bingmaps)
+    print(g)
+    print(g.ok)
+    print(g.json)
     return (g.lat, g.lng)
 
   def query(self, address):
     lat, lng = self.address_to_latlng(address)
     
-    query_url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=20&format=json'.format(lat, lng)
+    print(lat)
+    print(lng)
+
+    query_url = 'http://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=1&format=json'.format(lat, lng)
+    print(query_url)
+
     g = urllib.request.urlopen(query_url)
     charset=g.info().get_content_charset()
     results = g.read().decode(charset)
@@ -55,6 +65,8 @@ class Place(object):
 
     data = json.loads(results)
     
+    print(data)
+
     places = []
     for place in data['query']['geosearch']:
       name = place['title']
