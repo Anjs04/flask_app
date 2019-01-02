@@ -55,7 +55,7 @@ class Place(object):
     print(lat)
     print(lng)
 
-    query_url = 'http://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=1&format=json'.format(lat, lng)
+    query_url = 'http://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=20&format=json'.format(lat, lng)
     print(query_url)
 
     g = urllib.request.urlopen(query_url)
