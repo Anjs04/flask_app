@@ -7,6 +7,7 @@ import urllib.request
 from urllib.parse import urljoin
 import json
 
+import os
 
 db = SQLAlchemy()
 
@@ -42,7 +43,7 @@ class Place(object):
   
   def address_to_latlng(self, address):
     print(address)
-    g = geocoder.bing(address, key = process.env.key_bingmaps)
+    g = geocoder.bing(address, key = os.environ.get('key_bingmaps'))
     print(g)
     print(g.ok)
     print(g.json)
