@@ -1,11 +1,15 @@
-Requirements:
+Link to app:
+still-hamlet-32673.herokuapp.com
+
+Requirements for running locally:
 ```
 Python 3.7.1 or newer
 Virtualenv
 Postgres installed locally with PATH set up for psql
+Bing Maps API key
 ```
 
-Running locally:
+Stesp for running locally:
 ```
 $ cd learning-flask
 $ virtualenv flaskenv
