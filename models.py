@@ -7,7 +7,6 @@ import urllib.request
 from urllib.parse import urljoin
 import json
 
-var api_key = process.env.key_bingmaps;
 
 db = SQLAlchemy()
 
