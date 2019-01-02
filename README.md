@@ -1,5 +1,5 @@
 Link to app:
-still-hamlet-32673.herokuapp.com
+https://still-hamlet-32673.herokuapp.com
 
 Requirements for running locally:
 ```
